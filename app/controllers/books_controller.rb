@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @user = current_user
+    @user = @book.user
   end
 
   def index
@@ -39,7 +39,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id), notice: "You have updated book successfully."
     else
       @books = Book.all
-      render :edit
+      render :show
     end
   end
 
