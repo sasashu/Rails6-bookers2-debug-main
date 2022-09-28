@@ -42,7 +42,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id), notice: "You have updated book successfully."
     else
       @books = Book.all
-      render :show
+      render :edit
     end
   end
 
