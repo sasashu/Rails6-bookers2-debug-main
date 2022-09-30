@@ -41,19 +41,21 @@
             <% end %>
         </tr>
       </table>
-      <table>
+  		<table class='table'>
+        <tr>
         <% @book.book_comments.each do |book_comment| %>
-        <td><%= link_to book_comment.user do %>
-          <%= image_tag @user.get_profile_image, size:"50x50" %><br>
+        <%= link_to book_comment.user do %>
+          <%= image_tag @user.get_profile_image, size:"50x50" %>
           <%= @user.name %>
           <% end %>
-        </td>
-        <td>
+        </tr>
+        <tr>
           <%= book_comment.comment %>
           <% if book_comment.user == current_user %>
             <%= link_to 'Destroy', book_book_comment_path(book_comment.book, book_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-          <% end %>  
-        </td>
+          <% end %>
+          <br>
+        </tr>
       <% end %>
       </table>
 
