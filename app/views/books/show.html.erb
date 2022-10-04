@@ -22,17 +22,16 @@
               <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
               <td id="favorite_buttons_<%= @book.id %>">
                 <%= render "favorites/favorite", book: @book %></td>
-              <td>
-                <p>コメント数：<%= @book.book_comments.count %></p>
+              <td id="comment_counts">
+                  <%= render "book_comments/comment_count", book: @book %>
               </td>
             <% end %>
         </tr>
       </table>
-  		<table class='table table-borderless'>
-  		  <div id="comments_area_<%= @book.id %>">
+  		<!--<table は調整がうまくいかなかったのでrenderに移動しました-->
+  		  <div id="comments_area">
           <%= render 'book_comments/comments', book: @book %>
         </div>
-      </table>
 
       <div class="comment-form">
         <%= render 'book_comments/form', book: @book %>
